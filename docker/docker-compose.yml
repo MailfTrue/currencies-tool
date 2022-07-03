@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  backend:
+    image: mailf/currencies-tool-backend
+    build:
+      context: ../backend
+      dockerfile: ../docker/backend/Dockerfile
+  frontend:
+    image: mailf/currencies-tool-frontend
+    build:
+      context: ../frontend
+      dockerfile: ../docker/frontend/prod.Dockerfile
+  nginx:
+    image: nginx:1.19.8
+    depends_on:
+      - backend
+      - frontend
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+    ports:
+      - "8080:80"

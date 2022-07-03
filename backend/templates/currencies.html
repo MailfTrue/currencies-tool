@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Currencies quotes</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Currency code</th>
+                <th>Name</th>
+                <th>Denomination</th>
+                <th>Price</th>
+                <th>Updated</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for currency in quotes.currencies %}
+                <tr>
+                    <td>{{ currency.char_code }}</td>
+                    <td>{{ currency.name }}</td>
+                    <td>{{ currency.denomination }}</td>
+                    <td>₽{{ currency.value }}</td>
+                    <td>{{ quotes.date | datetime }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
